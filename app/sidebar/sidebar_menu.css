@@ -1,0 +1,114 @@
+.sidebar-container{
+    position : absolute;
+    top : 0;
+    left : 0;
+    margin-top: 5em;
+    padding-top: 2em;
+    background-color : #8e2b2b;
+    width: 15em;
+    height: calc(100% - 5em);
+}
+.sidebar-nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+}
+/*.tree{
+    overflow: hidden;
+    max-height: 200px;
+}*/
+
+/********************************************************************************
+                                Sidebar item
+ ********************************************************************************/
+.sidebar-header{
+    display : block;
+    background-color : #8e2b2b;
+    color : white;
+    text-decoration : none;
+    width : 100%;
+
+}
+
+.sidebar-header label{
+    color : white;
+    padding-left: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+}
+.sidebar-header img{
+    width:2em;
+    height:2em;
+    margin-left: 1em;
+}
+/********************************************************************************
+                                Sidebar item
+ ********************************************************************************/
+.sidebar-item {
+    display : block;
+    background-color : #c44e41;
+    color : white;
+    text-decoration : none;
+    width : 100%;
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.sidebar-item label{
+    color : white;
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    display : inline-block;
+}
+.sidebar-item img {
+    width:1.5em;
+    height:1.5em;
+    margin-right: 1em;
+    display : inline-block;
+}
+
+/********************************************************************************
+                           Sidebar item selected
+ ********************************************************************************/
+.sidebar-item-selected {
+    display : block;
+    background-color : #541b1b;
+    color : white;
+    text-decoration : none;
+    width : 100%;
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.sidebar-item-selected label{
+    color : white;
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+}
+.sidebar-item-selected img {
+    width:1.5em;
+    height:1.5em;
+    margin-right: 1em;
+}
+
+.new-application img {
+    width:1.5em;
+    height:1.5em;
+    margin-right: 1em;
+}
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
+.no-height{
+    max-height: 0px;
+}

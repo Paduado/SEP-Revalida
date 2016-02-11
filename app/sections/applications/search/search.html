@@ -1,0 +1,41 @@
+<div ng-controller="SearchCtrl">
+
+    <table st-table="applications" class="table table-striped search_container">
+        <thead>
+        <tr>
+            <th st-sort="id">ID</th>
+            <th st-sort="name">Nombre</th>
+            <th st-sort="status">Status</th>
+            <th st-sort="type">Tipo</th>
+            <th st-sort="date">Fecha</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th colspan="6"><input st-search="" class="form-control" placeholder="Buscar..." type="text"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="app in applications">
+            <td>{{app.id}}</td>
+            <td>{{app.name}}</td>
+            <td>{{app.status}}</td>
+            <td>{{app.type}}</td>
+            <td>{{app.date | date}}</td>
+            <td>
+                <button type="button" ng-click="removeItem(app)" class="btn btn-sm btn-danger">
+                    <i class="glyphicon glyphicon-edit">
+                    </i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center">
+                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+

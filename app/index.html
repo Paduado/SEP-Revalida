@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/custom.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="topbar/topbar.css">
+    <link rel="stylesheet" href="sidebar/sidebar_menu.css">
+    <link rel="stylesheet" href="sections/applications/new/new.css">
+    <link rel="stylesheet" href="sections/applications/search/search.css">
+    <link rel="stylesheet" href="libraries/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+
+<sidebar-menu></sidebar-menu>
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="main_container" ng-view></div>
+
+<top-bar class="top_bar_container"></top-bar>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->1
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="libraries/jquery-ui/jquery-ui.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/ng-droplet/dist/ng-droplet.js"></script>
+<script src="../node_modules/aws-sdk/dist/aws-sdk.js"></script>
+<script src="angular(.min).js"></script>
+<script src="ng-file-upload-shim(.min).js"></script> <!-- for no html5 browsers support -->
+<script src="ng-file-upload(.min).js"></script>
+
+<script src="app.js"></script>
+<script src="sidebar/sidebar_menu.js"></script>
+<script src="topbar/topbar.js"></script>
+<script src="sections/applications/search/search.js"></script>
+<script src="sections/applications/new/new.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+
+
+
+
+
+<script>
+    ( function( factory ) {
+        if ( typeof define === "function" && define.amd ) {
+
+            // AMD. Register as an anonymous module.
+            define( [ "../widgets/datepicker" ], factory );
+        } else {
+
+            // Browser globals
+            factory( jQuery.datepicker );
+        }
+    }( function( datepicker ) {
+
+        datepicker.regional.es = {
+            closeText: "Cerrar",
+            prevText: "&#x3C;Ant",
+            nextText: "Sig&#x3E;",
+            currentText: "Hoy",
+            monthNames: [ "enero","febrero","marzo","abril","mayo","junio",
+                "julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+            monthNamesShort: [ "ene","feb","mar","abr","may","jun",
+                "jul","ago","sep","oct","nov","dic" ],
+            dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+            dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+            dayNamesMin: [ "D","L","M","X","J","V","S" ],
+            weekHeader: "Sm",
+            dateFormat: "dd/mm/yy",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: "" };
+        datepicker.setDefaults( datepicker.regional.es );
+
+        return datepicker.regional.es;
+
+    } ) );
+</script>
+</body>
+</html>
