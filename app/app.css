@@ -4,6 +4,11 @@
     font-family: Roboto-Regular;
     src: url("./resources/fonts/roboto/Roboto-Regular.ttf");
 }
+
+*:focus {
+    outline: none;
+}
+
 body {
     width: 100vw;
     height: 100vh;

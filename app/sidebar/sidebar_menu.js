@@ -5,9 +5,7 @@
 
 (function ()
 {
-
     var app = angular.module('sidebarMenu', []);
-
     app.directive('sidebarMenu', function ()
     {
         return {
@@ -15,7 +13,6 @@
             templateUrl: 'sidebar/sidebar-menu.html',
             controller: ['$scope', '$location', function ($scope, $location)
             {
-
                 $scope.tab = 1;
 
                 $scope.isTabSelected = function (tab)
@@ -30,16 +27,14 @@
                 {
                     $location.path(path);
                 };
-                $('label.tree-toggler').click(function ()
+                $('.tree-toggler').click(function ()
                 {
                     $(this).parent().children('ul.tree').toggle('blind');
                 });
             }],
             controllerAs: 'sidebarCtrl'
         };
-
     });
-
     app.config(function ($logProvider)
     {
         $logProvider.debugEnabled(true);
@@ -47,7 +42,7 @@
 })();
 $(document).ready(function ()
 {
-    $('label.tree-toggler').click(function ()
+    $('.tree-toggler').click(function ()
     {
         $(this).parent().children('ul.tree').toggle(300);
     });

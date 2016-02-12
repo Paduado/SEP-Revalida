@@ -1,27 +1,26 @@
 .top_bar_container {
-    position : absolute;
+    position : fixed;
     top : 0;
-    background-color: #cccccc;
+    left: 0;
+    background-color:#631d1d;
     width: 100%;
     height: 5em;
 }
+
 .top_bar_label{
-    color : #631d1d;
     padding-left: 1em;
     padding-top: 1em;
     font-size: 2em;
     top:0;
     padding-bottom: 1em;
     display: inline-block;
-
 }
+
 .top_bar_img{
-    width:15em;
     height:5em;
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 0.75em;
     padding-bottom: 0.75em;
-    background-color:#631d1d;
     float: left;
 }
