@@ -4,7 +4,7 @@ angular.module('myApp.new', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider)
     {
         $routeProvider.when('/applications/new', {
-            templateUrl: 'sections/applications/new/pending.html',
+            templateUrl: 'sections/applications/new/new.html',
             controller: 'NewCtrl'
         });
     }])
@@ -91,32 +91,33 @@ angular.module('myApp.new', ['ngRoute'])
         $scope.submit = function ()
         {
 
-            //$scope.application.uploadTimestamp = "sdadsada";
-            //$scope.application.userID = "ddsda";
-            //var params = {
-            //    TableName: 'applications',
-            //    Item: $scope.application
-            //};
-            //
-            //var docClient = new AWS.DynamoDB.DocumentClient();
-            //
-            //docClient.put(params, function (err, data)
-            //{
-            //    if (err)
-            //    {
-            //        $mdDialog.show(
-            //            $mdDialog.alert()
-            //                .parent(angular.element(document.querySelector('body')))
-            //                .clickOutsideToClose(true)
-            //                .title('Error al subir la solicitud')
-            //                .textContent('Alguno de los campos esta vacio o con un formato erroneo.')
-            //                .ariaLabel('Alert Dialog Demo')
-            //                .ok('Aceptar')
-            //        );
-            //        console.log(err);
-            //    }
-            //    else
-            //    {
+            $scope.application.uploadTimestamp = Math.floor(Date.now());
+            $scope.application.userID = "ddsda";
+            $scope.application.applicationStatus = 1;
+            var params = {
+                TableName: 'applications',
+                Item: $scope.application
+            };
+
+            var docClient = new AWS.DynamoDB.DocumentClient();
+
+            docClient.put(params, function (err, data)
+            {
+                if (err)
+                {
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('body')))
+                            .clickOutsideToClose(true)
+                            .title('Error al subir la solicitud')
+                            .textContent('Alguno de los campos esta vacio o con un formato erroneo.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('Aceptar')
+                    );
+                    console.log(err);
+                }
+                else
+                {
                     $mdDialog.show(
                         $mdDialog.alert()
                             .parent(angular.element(document.querySelector('body')))
@@ -150,8 +151,8 @@ angular.module('myApp.new', ['ngRoute'])
                         file3: ""
                     };
                     console.log(data);
-                //}
-            //});
+                }
+            });
         };
 
 

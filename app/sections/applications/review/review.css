@@ -31,3 +31,8 @@ select.custom-input{
     outline: none;
 }
 
+.colorBlack .md-text
+{
+    color:black !important;
+}
+

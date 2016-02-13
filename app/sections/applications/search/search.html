@@ -1,41 +1,32 @@
-<div ng-controller="SearchCtrl">
+<md-card>
+    <md-table-container>
+        <table md-table ng-model="selected" md-progress="promise">
+            <thead md-head>
+            <tr md-row>
+                <th md-column>ID</th>
+                <th md-column>Nombre</th>
+                <th md-column>Status</th>
+                <th md-column>Tipo</th>
+                <th md-column>Fecha</th>
+                <th md-column>Detalles</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row ng-repeat="app in applications">
+                <td md-cell>{{app.userID}}</td>
+                <td md-cell>{{app.firstname+' '+app.lastname1+' '+app.lastname2}}</td>
+                <td md-cell>{{getStatus(app.applicationStatus)}}</td>
+                <td md-cell>{{app.type}}</td>
+                <td md-cell>{{formatDate(app.uploadTimestamp)}}</td>
+                <td md-cell>
 
-    <table st-table="applications" class="table table-striped search_container">
-        <thead>
-        <tr>
-            <th st-sort="id">ID</th>
-            <th st-sort="name">Nombre</th>
-            <th st-sort="status">Status</th>
-            <th st-sort="type">Tipo</th>
-            <th st-sort="date">Fecha</th>
-            <th></th>
-        </tr>
-        <tr>
-            <th colspan="6"><input st-search="" class="form-control" placeholder="Buscar..." type="text"/></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="app in applications">
-            <td>{{app.id}}</td>
-            <td>{{app.name}}</td>
-            <td>{{app.status}}</td>
-            <td>{{app.type}}</td>
-            <td>{{app.date | date}}</td>
-            <td>
-                <button type="button" ng-click="removeItem(app)" class="btn btn-sm btn-danger">
-                    <i class="glyphicon glyphicon-edit">
-                    </i>
-                </button>
-            </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="5" class="text-center">
-                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
-</div>
+                    <md-icon ng-click="openDetails(app)" md-svg-icon="resources/icons/ic_open_in_new.svg" style="color:#dc4931; cursor:pointer" aria-hidden="true">
+                    </md-icon>
+
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+
+</md-card>
 
