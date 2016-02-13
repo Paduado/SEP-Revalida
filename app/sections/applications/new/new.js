@@ -92,7 +92,7 @@ angular.module('myApp.new', ['ngRoute'])
         {
 
             $scope.application.uploadTimestamp = Math.floor(Date.now());
-            $scope.application.userID = "ddsda";
+            $scope.application.userID =  Math.floor(Date.now()).toString();
             $scope.application.applicationStatus = 1;
             var params = {
                 TableName: 'applications',
