@@ -6,6 +6,7 @@ Gestor.
 Administrador Dictaminador.
 
 A) El panel del Gestor contiene 2 funciones en este prototipo:
+
 1. Nuevo:
 En esta sección el gestor ingresa los datos del solicitante de acuerdo al procedimiento establecido por los organizadores del concurso.
 
