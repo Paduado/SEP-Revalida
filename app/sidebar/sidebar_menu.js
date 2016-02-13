@@ -27,6 +27,11 @@
                 {
                     $location.path(path);
                 };
+                $scope.logout = function (path)
+                {
+                    localStorage.clear();
+                    location.reload();
+                };
                 $('.tree-toggler').click(function ()
                 {
                     $(this).parent().children('ul.tree').toggle('blind');

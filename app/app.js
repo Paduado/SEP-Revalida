@@ -16,7 +16,7 @@ angular.module('myApp', [
     ])
     .config(['$routeProvider', function ($routeProvider)
     {
-        $routeProvider.otherwise({redirectTo: '/applications/install'});
+        $routeProvider.otherwise({redirectTo: '/applications/search'});
     }])
     .config(function ($mdThemingProvider)
     {
@@ -66,8 +66,7 @@ angular.module('myApp', [
             {
                 $rootScope.userType = 0;
                 console.log(next.redirectTo);
-                // no logged user, we should be going to #login
-                if(!next.redirectTo == "/login" )
+                if(next.templateUrl != "login/login.html")
                 {
                     $location.path("/login");
                 }
@@ -75,7 +74,7 @@ angular.module('myApp', [
             else
             {
                 $rootScope.userType = localStorage.getItem("userType");
-                console.log(next.redirectTo);
+                $location.path("/applications/search");
             }
         });
     });
