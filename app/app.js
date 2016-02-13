@@ -1,4 +1,5 @@
 'use strict';
+var creds = {};
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
@@ -6,6 +7,7 @@ angular.module('myApp', [
         'myApp.version',
         'sidebarMenu',
         'topBar',
+        'myApp.login',
         'myApp.search',
         'myApp.new',
         'myApp.review',
@@ -56,11 +58,31 @@ angular.module('myApp', [
                 elem.off(attr.eventFocus);
             });
         };
+    })
+    .run(function($rootScope, $location)
+    {
+        // register listener to watch route changes
+        $rootScope.$on( "$routeChangeStart", function(event, next, current)
+        {
+            if(localStorage.getItem("userIsLoggedIn") === null)
+            {
+                $rootScope.userType = 0;
+                console.log(next.redirectTo);
+                if(next.templateUrl != "login/login.html")
+                {
+                    $location.path("/login");
+                }
+            }
+            else
+            {
+                $rootScope.userType = localStorage.getItem("userType");
+                $location.path("/applications/search");
+            }
+        });
     });
-
 
 AWS.config.region = 'us-east-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'us-east-1:6e0e3192-e60d-4a54-9462-0c129e539d2c'
 });
-
+AWS.config.credentials = creds;
