@@ -48,7 +48,6 @@ body {
 .main_container {
     position: absolute;
     top: 5em;
-    background-color: #eee;
     left: 15em;
     width: calc(100% - 15em);
     height: calc(100% - 5em);

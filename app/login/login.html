@@ -1,0 +1,32 @@
+<div ng-controller="loginController" class="login-container">
+	<img class="login-logo" src="resources/img/seploginlogo.png">
+	<form name="form" ng-submit="doLogin()">
+		<div class="login-email">
+			<md-input-container>
+	            <label for="email">Email</label>
+	            <input class="login-input" type="email" id="loginemail" name="loginemail" ng-model="email" required>
+	            <ng-messages for="form.loginemail.$error">
+	                <ng-message when="email">Campo requerido</ng-message>
+	            </ng-messages>
+	            <div class="md-errors-spacer"></div>
+	        </md-input-container>
+		</div>
+		<div class="login-password">
+			<md-input-container>
+	            <label for="password">Contraseña</label>
+	            <input class="login-input" type="password" id="loginpassword" name="loginpassword" ng-model="password" required>
+	            <ng-messages for="form.loginpassword.$error">
+	                <ng-message when="required">Campo requerido</ng-message>
+	            </ng-messages>
+	            <div class="md-errors-spacer"></div>
+	        </md-input-container>
+		</div>
+
+		<div class="login-button">
+			<md-button type="submit" class="md-raised md-primary">Iniciar Sesión</md-button>
+		</div>
+
+		<p ng-class="invalidLogin?'login-invalid-credentials-show':'login-invalid-credentials-hide'">Credenciales Inválidas</p>
+
+	</form>
+</div>

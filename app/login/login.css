@@ -1,0 +1,56 @@
+.login-container
+{
+	position: fixed;
+	top:5em;
+	left:0;
+	width: 100vw;
+	height: calc(100% - 5em);
+	background-color: white;
+	z-index: 1000;
+	text-align: center;
+	overflow-y: auto;
+	padding-bottom: 2em;
+}
+
+.login-logo
+{
+	margin-top: 5em;
+	height: 10em;
+}
+
+.login-email
+{
+	margin-top: 4em;
+}
+
+.login-email, .login-password
+{
+	text-align: left !important;
+	margin-left: calc(50% - 15em);
+}
+
+.login-input
+{
+	width: 30em !important;
+	text-align: left;
+}
+
+.login-button
+{
+	margin-top: 4em;
+}
+
+.login-input
+{
+	clear: both !important;
+}
+
+.login-invalid-credentials-hide
+{
+	display: none;
+}
+
+.login-invalid-credentials-show
+{
+	display: none;
+}
