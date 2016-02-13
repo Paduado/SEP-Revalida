@@ -8,9 +8,11 @@ angular.module('myApp', [
         'topBar',
         'myApp.search',
         'myApp.new',
+        'myApp.review',
         'ngMaterial',
         'ngMessages',
-        'ngDroplet'
+        'ngDroplet',
+        'md.data.table'
     ])
     .config(['$routeProvider', function ($routeProvider)
     {

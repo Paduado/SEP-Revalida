@@ -1,0 +1,207 @@
+
+        <div class="panel  panel_container">
+            <div class="panel-header">Tipo de trámite</div>
+            <div class="panel-body">
+                <div layout="row" layout-align="center">
+
+                    <md-radio-group ng-model="application.type">
+                        <md-radio-button disabled style="display: inline-block" value="1" class="md-primary">Equivalencia
+                        </md-radio-button>
+                        <md-radio-button disabled style="display: inline-block;margin-left: 1em" class="md-primary" value="2">
+                            Revalidación
+                        </md-radio-button>
+                    </md-radio-group>
+                </div>
+
+                <div layout="row" style="margin-top:1em">
+                    <div flex="30" flex-offset="15" layout="column">
+                        <md-input-container class="colorBlack">
+                            <label>Género:</label>
+                            <md-select ng-model="application.gender" disabled>
+                                <md-option value="1">Básica</md-option>
+                                <md-option value="2">Media Superior</md-option>
+                                <md-option value="3">Superior</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div layout="column" flex="30" flex-offset="10">
+                        <md-input-container>
+                            <label>Especie:</label>
+                            <md-select ng-model="application.subgender" disabled>
+                                <md-option value="1">Prescolar</md-option>
+                                <md-option value="2">Primaria</md-option>
+                                <md-option value="3">Secundaria</md-option>
+                                <md-option value="4">Bachillerato General</md-option>
+                                <md-option value="5">Bachillerato Tecnológico
+                                </md-option>
+                                <md-option value="6">Bachillerato Técnico Profesional
+                                </md-option>
+                                <md-option value="7">Bachillerato Tecnólogo
+                                </md-option>
+                                <md-option value="8">Técnico Superior Universitario
+                                </md-option>
+                                <md-option value="9">Licenciatura</md-option>
+                                <md-option value="10">Especialidad</md-option>
+                                <md-option value="11">Maestría</md-option>
+                                <md-option value="12">Doctorado</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel   panel_container">
+            <div class="panel-header">Datos del solicitante</div>
+            <div class="panel-body">
+                <div layout="row" layout-align="center">
+                    <div layout="column" flex="40">
+                        <md-input-container>
+                            <label for="lastname1">Apellido paterno:</label>
+                            <input type="text" id="lastname1"  ng-model="application.lastname1"
+                                   readonly>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="lastname2">Apellido materno:</label>
+                            <input type="text" id="lastname2" name="lastname2" ng-model="application.lastname2" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="firstname">Nombre:</label>
+                            <input type="text" id="firstname" name="firstname" ng-model="application.firstname"
+                                   readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="email">Correo electrónico:</label>
+                            <input type="email" id="email" name="email" ng-model="application.email" multiple readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="phone">Teléfono:</label>
+                            <input type="text" id="phone" name="phone" ng-model="application.phone" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="sex">Género:</label>
+                            <md-select name="sex" id="sex" ng-model="application.sex" disabled
+                                       ng-style="sex==''?{'color':'#aaa'}:{'color':'#000'}">
+                                <md-option value="m">Masculino</md-option>
+                                <md-option value="f">Femenino</md-option>
+                            </md-select>
+
+                            <div class="md-errors-spacer"></div>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="birthdate">Fecha de nacimiento:</label>
+                            <input type="text" id="birthdate" name="birthdate" ng-model="application.birthdate" readonly
+                                   readonly>
+
+                        </md-input-container>
+
+
+                    </div>
+                    <div layout="column" flex="40" flex-offset="10">
+                        <md-input-container>
+                            <label for="country">Pais:</label>
+                            <input type="text" id="country" name="country" ng-model="application.country" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container><label for="state">Estado:</label>
+                            <input type="text" id="state" name="state" ng-model="application.state" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="city">Municipio:</label>
+                            <input type="text" id="city" name="city" ng-model="application.city" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="street">Calle:</label>
+                            <input type="text" id="street" name="street" ng-model="application.street" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="colony">Colonia:</label>
+                            <input type="text" id="colony" name="colony" ng-model="application.colony" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="cp">C.P:</label>
+                            <input type="text" id="cp" name="cp" ng-model="application.cp" readonly>
+
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label for="number">Número:</label>
+                            <input type="text" id="number" name="number" ng-model="application.number" readonly>
+
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="panel  panel_container">
+        <div class="panel-header">Documentos</div>
+        <div class="panel-body">
+            <div layout="row">
+
+                <div layout="column" flex-offset="10" flex="20"  prop="file1" indicator="progress1"
+                     class="drop-container" layout-align="end center">
+
+                    <h5>Acta de Nacimiento</h5>
+
+                    <div class="file-icon-container " ng-click="openFile(application.file1)">
+                        <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
+                        <md-tooltip md-direction="left">
+                            Ver
+                        </md-tooltip>
+                    </div>
+
+                </div>
+                <div layout="column" flex-offset="10" flex="20"  prop="file2" indicator="progress2"
+                     class="drop-container" layout-align="end center">
+
+                    <h5>CURP</h5>
+
+
+                    <div class="file-icon-container " ng-click="openFile(application.file2)">
+                        <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
+                        <md-tooltip md-direction="left">
+                            Ver
+                        </md-tooltip>
+                    </div>
+
+                </div>
+                <div layout="column" flex-offset="10" flex="20"  prop="file3" indicator="progress3"
+                     class="drop-container" layout-align="end center">
+
+                    <h5>Certificado</h5>
+
+
+                    <div class="file-icon-container " ng-click="openFile(application.file3)">
+                        <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
+                        <md-tooltip md-direction="left">
+                            Ver
+                        </md-tooltip>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+

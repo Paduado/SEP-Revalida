@@ -4,28 +4,15 @@
 			<div class="sidebar-nav-header tree-toggler">
 				<img src="./resources/icons/ic_menu_application.png">
 				<label>Solicitudes</label>
-				<i ng-click="setTab(0); go('/applications/new')" style="font-size:1.5em; float: right; margin-top: .7em; margin-right: 1em;" class="fa fa-plus-circle"></i>
 			</div>
 			<ul class="sidebar-nav tree transition">
-				<li ng-click="setTab(1); go('/applications/search')" ng-class="isTabSelected(1)?'sidebar-item-selected':'sidebar-item'">
-					<img src="./resources/icons/ic_menu_search.png">
-					<p>Buscar</p>
+				<li ng-click="setTab(1); go('/applications/new')" ng-class="isTabSelected(1)?'sidebar-item-selected':'sidebar-item'">
+					<i style="font-size:1.5em; margin-top: .1em; margin-left: .7em;margin-right: 1em;" class="fa fa-plus-circle"></i>
+					<p>Nuevo</p>
 				</li>
 				<li ng-click="setTab(2); go('/applications/search')" ng-class="isTabSelected(2)?'sidebar-item-selected':'sidebar-item'">
-					<img src="./resources/icons/ic_menu_send.png">
-					<p>Enviadas</p>
-				</li>
-				<li ng-click="setTab(3); go('/applications/search')" ng-class="isTabSelected(3)?'sidebar-item-selected':'sidebar-item'">
-					<img src="./resources/icons/ic_menu_approved.png">
-					<p>Pendientes</p>
-				</li>
-				<li ng-click="setTab(4); go('/applications/search')" ng-class="isTabSelected(4)?'sidebar-item-selected':'sidebar-item'">
-					<img src="./resources/icons/ic_menu_approved.png">
-					<p>Aprobadas</p>
-				</li>
-				<li ng-click="setTab(5); go('/applications/search')" ng-class="isTabSelected(5)?'sidebar-item-selected':'sidebar-item'">
-					<img src="./resources/icons/ic_menu_cancelled.png">
-					<p>Canceladas</p>
+					<img src="./resources/icons/ic_menu_search.png">
+					<p>Buscar</p>
 				</li>
 			</ul>
 		</li>
