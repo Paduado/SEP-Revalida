@@ -59,6 +59,6 @@ angular.module('myApp', [
 
 AWS.config.region = 'us-east-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'us-east-1:6e0e3192-e60d-4a54-9462-0c129e539d2c',
+    IdentityPoolId: 'us-east-1:6e0e3192-e60d-4a54-9462-0c129e539d2c'
 });
 
