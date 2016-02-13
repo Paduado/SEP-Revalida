@@ -75,14 +75,21 @@ angular.module('myApp', [
             }
             else
             {
+
                 $rootScope.userType = localStorage.getItem("userType");
-                $location.path("/applications/search");
+                console.log(next.redirectTo);
+                console.log(event.redirectTo);
+                if(next.templateUrl == "login/login.html")
+                {
+                    $location.path("/applications/search");
+                }
+
             }
         });
     });
 
 AWS.config.region = 'us-east-1'; // Region
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+var creds = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'us-east-1:6e0e3192-e60d-4a54-9462-0c129e539d2c'
 });
 AWS.config.credentials = creds;
