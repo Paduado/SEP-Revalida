@@ -19,3 +19,9 @@ Otras funciones:
 El sistema genera correos electrónicos automáticos para notificar al usuario cuando su solicitud ha sufrido un cambio de estatus.
 
 NOTA: Este repositorio contiene una versión prototipo en fase experimental solamente. No se ha realizado una validación extensiva al mismo que permita garantizar su completo funcionamiento durante los procesos de la SEP.
+
+[#Demo en Línea](https://d2efz85317dg56.cloudfront.net/)
+
+Accesos:
+Servidor Público: seprevalidaservidorpublico@smartplace.mx
+Administrador: seprevalidaadministrador@smartplace.mx
