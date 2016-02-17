@@ -119,3 +119,15 @@ else
         }
     });
 }
+
+var options = {
+    appId : '8285fde146ca42b39a2e18da77549746', //Amazon Mobile Analytics App ID
+    appTitle : "SEPRevalida",
+    appVersionName : "0.1",
+    appVersionCode : "1",
+    appPackageName : "sep.smartplace.mx"
+};
+
+var mobileAnalyticsClient = new AMA.Manager(options);
+
+mobileAnalyticsClient.submitEvents();
