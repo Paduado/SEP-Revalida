@@ -7,27 +7,28 @@ angular.module('myApp.login', ['ngRoute'])
             templateUrl: 'login/login.html',
         });
     }])
-    .controller('loginController', function ($scope)
+    .controller('loginController',["$scope","$location","$rootScope", function ($scope,$location)
     {
+    	var that = this;
     	$scope.email = "";
     	$scope.password = "";
+    	$scope.loggingIn = false;
     	$scope.invalidLogin = false;
-
-    	$scope.doLogin = function()
+    	that.handleUpdateCredentialsResponse = function(err)
     	{
-    		console.log($scope.email);
-    		console.log($scope.password);
-    		$scope.invalidLogin = false;
-  			var lambda = new AWS.Lambda();
-  			var input ={
-				email: $scope.email,
-				password: $scope.password
-			};
-  			lambda.invoke({
-				FunctionName: 'SEPLogin',
-				Payload: JSON.stringify(input)
-			}, function(err, data)
-			{
+    		$scope.$apply(function()
+    		{
+				if (err) console.log(err, err.stack);
+				else {
+					$location.path("/applications/search");
+				}
+			});
+    	};
+    	that.handleLoginResponse = function(err, data)
+    	{
+    		$scope.$apply(function()
+    		{
+				$scope.loggingIn = false
 				if(err)
 				{
 					$scope.invalidLogin = true;
@@ -41,15 +42,37 @@ angular.module('myApp.login', ['ngRoute'])
 					}
 					else
 					{
-						// You will never know what happens before :)
-						//creds.expire = true;
-						// You will never know what happens next :)
 						localStorage.setItem("userIsLoggedIn", true);
 						localStorage.setItem("userType", output.userType);
-      					window.location.reload();
+						localStorage.setItem("identityID", output.identityId);
+						localStorage.setItem("identityPoolID", output.identityPoolID);
+						localStorage.setItem("token", output.token);
+
+						var creds = AWS.config.credentials;
+						creds.params.IdentityPoolId = output.identityPoolID;
+						creds.params.IdentityId = output.identityId;
+						creds.params.Logins = {
+							'cognito-identity.amazonaws.com': output.token
+						};
+						creds.expired = true;
+						AWS.config.credentials.get(that.handleUpdateCredentialsResponse);
 					}
 				}
 			});
-    	}
+		};
+    	$scope.doLogin = function()
+    	{
+    		$scope.invalidLogin = false;
+  			var lambda = new AWS.Lambda();
+  			var input ={
+				email: $scope.email,
+				password: $scope.password
+			};
+			$scope.loggingIn = true;
+  			lambda.invoke({
+				FunctionName: 'SEPLogin',
+				Payload: JSON.stringify(input)
+			}, that.handleLoginResponse);
+    	};
 
-    });
+    }]);

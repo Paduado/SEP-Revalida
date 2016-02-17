@@ -89,7 +89,33 @@ angular.module('myApp', [
     });
 
 AWS.config.region = 'us-east-1'; // Region
-var creds = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'us-east-1:6e0e3192-e60d-4a54-9462-0c129e539d2c'
-});
-AWS.config.credentials = creds;
+if(localStorage.getItem("userIsLoggedIn") === null)
+{
+    var creds = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:6e0e3192-e60d-4a54-9462-0c129e539d2c'
+    });
+    AWS.config.credentials = creds;
+}
+else
+{
+    var creds = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:6e0e3192-e60d-4a54-9462-0c129e539d2c'
+    });
+    AWS.config.credentials = creds;
+
+    creds.params.IdentityPoolId = localStorage.getItem("identityPoolID");
+    creds.params.IdentityId = localStorage.getItem("identityID");
+    creds.params.Logins = {
+        'cognito-identity.amazonaws.com': localStorage.getItem("token")
+    };
+    creds.expired = true;
+    AWS.config.credentials.get(function(err)
+    {
+        if(err)
+        {
+            console.log(err, err.stack);
+            localStorage.clear();
+            location.reload();
+        }
+    });
+}

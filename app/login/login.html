@@ -23,7 +23,10 @@
 		</div>
 
 		<div class="login-button">
-			<md-button type="submit" class="md-raised md-primary">Iniciar Sesión</md-button>
+			<md-button type="submit" ng-disabled="loggingIn" class="md-raised md-primary"><span ng-if="!loggingIn">Iniciar Sesión</span><li ng-if="loggingIn" class="fa fa-circle-o-notch fa-spin"></li></md-button>
+		</div>
+		<div ng-if="loggingIn">
+			<md-progress-circular class="md-accent md-hue-1" md-mode="{{vm.modes[2]}}" md-diameter="60"></md-progress-circular>
 		</div>
 
 		<p ng-class="invalidLogin?'login-invalid-credentials-show':'login-invalid-credentials-hide'">Credenciales Inválidas</p>
