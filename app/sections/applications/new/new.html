@@ -202,80 +202,26 @@
     <div class="panel  panel_container">
         <div class="panel-header">Documentos</div>
         <div class="panel-body">
-            <div layout="row">
+            <div class="card-body" style="padding:4em">
+                <md-grid-list  md-cols="3" md-row-height="6:5" md-gutter="4em">
 
-                <div layout="column" flex-offset="10" flex="20" dropfile prop="file1" indicator="progress1"
-                     class="drop-container" layout-align="end center">
+                    <md-grid-tile md-colspan="1" md-rowspan="1">
+                        <dropfile layout="column" class="dropfile" ng-model="application.acta" file-name="Acta de Nacimiento" on-destroy="deleteDoc('acta')" deletable="true"></dropfile>
+                    </md-grid-tile>
+                    <md-grid-tile md-colspan="1" md-rowspan="1">
+                        <dropfile layout="column" class="dropfile" ng-model="application.curp" file-name="CURP" on-destroy="deleteDoc('curp')" deletable="true"></dropfile>
+                    </md-grid-tile>
+                    <md-grid-tile md-colspan="1" md-rowspan="1">
+                        <dropfile layout="column" class="dropfile" ng-model="application.cert" file-name="Certificado" on-destroy="deleteDoc('cert')" deletable="true"></dropfile>
+                    </md-grid-tile>
+                </md-grid-list>
+            </div>
 
-                    <h5>Acta de Nacimiento</h5>
-
-                    <div ng-show="application.file1 == ''" class="dropzone">Arrastre archivo o haga click</div>
-
-                    <div class="file-icon-container " ng-show="application.file1 != ''">
-                        <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
-                        <md-icon class="delete-icon" md-svg-src="resources/icons/ic_delete_forever.svg">
-                            <md-tooltip md-direction="left">
-                                Eliminar
-                            </md-tooltip>
-                        </md-icon>
-                    </div>
-
-                    <md-progress-linear ng-show="progress1 != 0" md-mode="determinate"
-                                        ng-value="progress1"></md-progress-linear>
-                    <div class="name"></div>
-
-                </div>
-                <div layout="column" flex-offset="10" flex="20" dropfile prop="file2" indicator="progress2"
-                     class="drop-container" layout-align="end center">
-
-                    <h5>CURP</h5>
-
-                    <div ng-show="application.file2 == ''" class="dropzone">Arrastre archivo o haga click</div>
-
-                    <div class="file-icon-container " ng-show="application.file2 != ''">
-                        <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
-                        <md-icon class="delete-icon" md-svg-src="resources/icons/ic_delete_forever.svg">
-                            <md-tooltip md-direction="left">
-                                Eliminar
-                            </md-tooltip>
-                        </md-icon>
-                    </div>
-
-                    <md-progress-linear ng-show="progress2 != 0" md-mode="determinate"
-                                        ng-value="progress2"></md-progress-linear>
-                    <div class="name"></div>
-
-                </div>
-                <div layout="column" flex-offset="10" flex="20" dropfile prop="file3" indicator="progress3"
-                     class="drop-container" layout-align="end center">
-
-                    <h5>Certificado</h5>
-
-                    <div ng-show="application.file3 == ''" class="dropzone">Arrastre archivo o haga click</div>
-
-                    <div class="file-icon-container " ng-show="application.file3 != ''">
-                        <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
-                        <md-icon class="delete-icon" md-svg-src="resources/icons/ic_delete_forever.svg">
-                            <md-tooltip md-direction="left">
-                                Eliminar
-                            </md-tooltip>
-                        </md-icon>
-                    </div>
-
-                    <md-progress-linear ng-show="progress3 != 0" md-mode="determinate"
-                                        ng-value="progress3"></md-progress-linear>
-                    <div class="name"></div>
-
-                </div>
-
-
+            <div layout="row" layout-align="center" style="margin-bottom: 3em">
+                <md-button ng-click="submit()" ng-disabled="applicationIncomplete()" class="md-raised md-primary">Subir
+                    solicitud
+                </md-button>
             </div>
         </div>
-    </div>
 
-    <div layout="row" layout-align="center" style="margin-bottom: 3em">
-        <md-button ng-click="submit()" ng-disabled="applicationIncomplete()" class="md-raised md-primary">Subir solicitud</md-button>
-    </div>
-</div>
-
-<input data-prop="hola"style="display: none" id="input-file"type="file">
+        <input data-prop="hola" style="display: none" id="input-file" type="file">

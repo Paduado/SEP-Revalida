@@ -29,14 +29,10 @@ angular.module('myApp.new', ['ngRoute'])
             colony: "",
             cp: "",
             number: "",
-            file1: "",
-            file2: "",
-            file3: ""
+            acta: "",
+            curp: "",
+            cert: ""
         };
-
-        $scope.progress1 = 0;
-        $scope.progress2 = 0;
-        $scope.progress3 = 0;
 
         $scope.isTypeSelected = function (type)
         {
@@ -146,156 +142,21 @@ angular.module('myApp.new', ['ngRoute'])
                         colony: "",
                         cp: "",
                         number: "",
-                        file1: "",
-                        file2: "",
-                        file3: ""
+                        acta: "",
+                        curp: "",
+                        cert: ""
                     };
                     console.log(data);
                 }
             });
         };
 
-
-        $scope.onFileAdded = function (file, prop, indicator)
+        $scope.deleteDoc = function(doc)
         {
-            $scope[indicator] = 1;
-            $scope.$digest();
-            $scope.upload(file, function (err, data)
-                {
-                    if (err)
-                        console.log(err);
-                    else
-                    {
-                        console.log(data.Location);
-                        //onUpload(data);
-                        $scope.application[prop] = data.Location;
-                        $scope.$digest();
-                    }
-                },
-                function (progress)
-                {
-                    $scope[indicator] = progress;
-                    $scope.$digest();
-                });
+            $scope.application[doc] = "";
         };
+    });
 
-        $scope.upload = function (file, onUpload, onUploading)
-        {
-            var params = {Bucket: 'sepfiles', Key: file.name, Body: file,ACL: 'public-read'};
-
-            var s3 = new AWS.S3();
-
-            s3.upload(params, onUpload).on('httpUploadProgress', function (event)
-            {
-                console.log(Math.floor(event.loaded / event.total * 100));
-                onUploading(Math.floor(event.loaded / event.total * 100));
-            });
-
-        };
-        $scope.deleteFile = function (prop, indicator)
-        {
-            $scope.application[prop] = "";
-            $scope[indicator] = 0;
-            $scope.$digest()
-        }
-
-    }).directive('dropfile', function ($compile)
-{
-    return function ($scope, element, attrs)
-    {
-        var drop = element[0].getElementsByClassName('dropzone')[0];
-        var iconContainer = element[0].getElementsByClassName('file-icon-container')[0];
-        var fileIcon = iconContainer.getElementsByClassName('file-icon')[0];
-        var deleteIcon = iconContainer.getElementsByClassName('delete-icon')[0];
-        var name = element[0].getElementsByClassName('name')[0];
-        var inputFile = document.getElementById('input-file');
-
-        addEventHandler(drop, 'dragover', cancel);
-        addEventHandler(drop, 'dragenter', cancel);
-        addEventHandler(drop, 'drop', function (e)
-        {
-            e = e || window.event; // get window.event if e argument missing (in IE)
-            if (e.preventDefault)
-            {
-                e.preventDefault();
-            } // stops the browser from redirecting off to the image.
-            name.innerHTML = e.dataTransfer.files[0].name;
-            $scope.onFileAdded(e.dataTransfer.files[0], attrs.prop, attrs.indicator);
-
-            return false;
-        });
-
-        addEventHandler(drop, 'click', function (e)
-        {
-            inputFile.dataset.prop = attrs.prop;
-            inputFile.click();
-            return false;
-        });
-
-        addEventHandler(iconContainer, 'click', function (e)
-        {
-            name.innerHTML = "";
-            $scope.deleteFile(attrs.prop, attrs.indicator);
-            return false;
-        });
-        addEventHandler(iconContainer, 'mouseover', function (e)
-        {
-            fileIcon.style.opacity = 0;
-            deleteIcon.style.opacity = 1;
-            return false;
-        });
-        addEventHandler(iconContainer, 'mouseleave', function (e)
-        {
-            fileIcon.style.opacity = 1;
-            deleteIcon.style.opacity = 0;
-            return false;
-        });
-
-        addEventHandler(inputFile, 'change', function (e)
-        {
-            if (this.dataset.prop == attrs.prop)
-            {
-                name.innerHTML = e.srcElement.files[0].name;
-                $scope.onFileAdded(e.srcElement.files[0], attrs.prop, attrs.indicator);
-            }
-            return false;
-        });
-
-
-        function addEventHandler(obj, evt, handler)
-        {
-            if (obj.addEventListener)
-            {
-                // W3C method
-                obj.addEventListener(evt, handler, false);
-            } else if (obj.attachEvent)
-            {
-                // IE method.
-                obj.attachEvent('on' + evt, handler);
-            } else
-            {
-                // Old school method.
-                obj['on' + evt] = handler;
-            }
-        }
-
-        function cancel(e)
-        {
-            if (e.preventDefault)
-            {
-                e.preventDefault();
-            }
-            return false;
-        }
-    };
-});
-
-function dropArea(drop, onFileAdded)
-{
-    //var drop = document.getElementById(id);
-
-
-}
 
 
 

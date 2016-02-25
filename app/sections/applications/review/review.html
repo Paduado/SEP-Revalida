@@ -156,50 +156,20 @@
 <div class="panel  panel_container">
     <div class="panel-header">Documentos</div>
     <div class="panel-body">
-        <div layout="row">
+        <md-grid-list  md-cols="3" md-row-height="6:5" md-gutter="4em">
 
-            <div layout="column" flex-offset="10" flex="20" prop="file1" indicator="progress1"
-                 class="drop-container" layout-align="end center">
-
-                <h5>Acta de Nacimiento</h5>
-
-                <div class="file-icon-container " ng-click="openFile(application.file1)">
-                    <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
-                    <md-tooltip md-direction="left">
-                        Ver
-                    </md-tooltip>
-                </div>
-
-            </div>
-            <div layout="column" flex-offset="10" flex="20" prop="file2" indicator="progress2"
-                 class="drop-container" layout-align="end center">
-
-                <h5>CURP</h5>
+            <md-grid-tile md-colspan="1" md-rowspan="1">
+                <dropfile layout="column" class="dropfile" ng-model="application.acta" file-name="Acta de Nacimiento" ></dropfile>
+            </md-grid-tile>
+            <md-grid-tile md-colspan="1" md-rowspan="1">
+                <dropfile layout="column" class="dropfile" ng-model="application.curp" file-name="CURP"  ></dropfile>
+            </md-grid-tile>
+            <md-grid-tile md-colspan="1" md-rowspan="1">
+                <dropfile layout="column" class="dropfile" ng-model="application.cert" file-name="Certificado" ></dropfile>
+            </md-grid-tile>
+        </md-grid-list>
 
 
-                <div class="file-icon-container " ng-click="openFile(application.file2)">
-                    <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
-                    <md-tooltip md-direction="left">
-                        Ver
-                    </md-tooltip>
-                </div>
-
-            </div>
-            <div layout="column" flex-offset="10" flex="20" prop="file3" indicator="progress3"
-                 class="drop-container" layout-align="end center">
-
-                <h5>Certificado</h5>
-
-
-                <div class="file-icon-container " ng-click="openFile(application.file3)">
-                    <md-icon class="file-icon" md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>
-                    <md-tooltip md-direction="left">
-                        Ver
-                    </md-tooltip>
-                </div>
-            </div>
-
-        </div>
     </div>
 </div>
 

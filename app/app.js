@@ -59,6 +59,180 @@ angular.module('myApp', [
             });
         };
     })
+    .directive('dropfile', function ()
+{
+    return {
+        scope: {
+            ngModel: '=',
+            onDestroy:'&',
+            deletable:'='
+        },
+        transclude: true,
+        template:
+        '<h5 layout="row" layout-align="center">{{name}}</h5>'
+        + '<div layout="row" layout-align="center center" ng-show="ngModel == \'\' " class="dropzone">'
+        + '<p>Arrastre archivo o haga click</p>'
+        + '</div>'
+        + '<div  layout="row"  layout-align="center" class="file-icon-container" ng-show="ngModel != \'\'">'
+        +'<md-fab-speed-dial  ng-init="open = false" md-open="open"  md-direction="right" class="md-scale md-hover-full"  ng-mouseenter="open=true" ng-mouseleave="open=false">'
+        +'<md-fab-trigger style="width: 120px;">'
+        + '<md-icon  class="file-icon"md-svg-src="resources/icons/ic_insert_drive_file.svg"></md-icon>'
+        +'</md-fab-trigger>'
+        +'<md-fab-actions>'
+        +'<md-button ng-click="viewFile()" class="md-fab md-raised md-mini">'
+        + '<md-tooltip md-direction="down">Ver</md-tooltip>'
+        +'<md-icon md-svg-src="resources/icons/ic_search.svg" ></md-icon>'
+        +'</md-button>'
+        +'<md-button  ng-show="deletable" ng-click="deleteFile()" class="md-fab md-raised md-mini">'
+        + '<md-tooltip md-direction="down">Eliminar</md-tooltip>'
+        +'<md-icon md-svg-src="resources/icons/ic_delete_forever.svg"></md-icon>'
+        +'</md-button>'
+        +'</md-fab-actions>'
+        +'</md-fab-speed-dial>'
+        + '</div>'
+        + '<md-progress-linear ng-show="indicator != undefined" md-mode="determinate" ng-value="indicator"></md-progress-linear>'
+        + '<div class="name">{{filename}}</div>'
+        +'<input type="file"class="input-file" style="display: none">',
+        //+'<md-checkbox ng-model="open"></md-checkbox>',
+        link: function (scope, element, attrs)
+        {
+            //scope.ngModel = "";
+            scope.name = attrs.fileName;
+            scope.filename = "";
+
+            scope.$on('$destroy', function ()
+            {
+                scope.onDestroy();
+            });
+
+            var drop = element[0].getElementsByClassName('dropzone')[0];
+            var inputFile = element[0].getElementsByClassName('input-file')[0];
+
+            addEventHandler(drop, 'dragover', cancel);
+            addEventHandler(drop, 'dragenter', cancel);
+            addEventHandler(drop, 'drop', cancel);
+            addEventHandler(drop, 'click', cancel);
+
+            addEventHandler(drop, 'drop', function (e)
+            {
+                e = e || window.event;
+                if (e.preventDefault)
+                {
+                    e.preventDefault();
+                }
+                scope.filename = e.dataTransfer.files[0].name;
+                scope.onFileAdded(e.dataTransfer.files[0]);
+
+                return false;
+            });
+
+            addEventHandler(drop, 'click', function (e)
+            {
+                inputFile.click();
+                return false;
+            });
+
+            addEventHandler(inputFile, 'change', function(e)
+            {
+                e.preventDefault();
+                scope.filename= e.srcElement.files[0].name;
+                scope.onFileAdded(e.srcElement.files[0]);
+                this.value = null;
+                return false;
+            });
+
+
+            function addEventHandler(obj, evt, handler)
+            {
+                if (obj.addEventListener)
+                {
+                    obj.addEventListener(evt, handler, false);
+                } else if (obj.attachEvent)
+                {
+                    obj.attachEvent('on' + evt, handler);
+                } else
+                {
+                    obj['on' + evt] = handler;
+                }
+            }
+
+            function cancel(e)
+            {
+                if (e.preventDefault)
+                {
+                    e.preventDefault();
+                }
+                return false;
+            }
+
+            scope.onFileAdded = function (file)
+            {
+                scope.indicator = 1;
+                scope.$digest();
+                scope.upload(file, function (err, data)
+                {
+                    if (err)
+                    {
+                        console.log(err);
+                        scope.indicator = undefined;
+                        scope.$apply();
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('body')))
+                            .clickOutsideToClose(true)
+                            .title('No se pudo subir el archivo')
+                            .textContent('Verifique su conexión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('Aceptar')
+                        );
+                    }
+                    else
+                    {
+                        console.log(data.Location);
+                        scope.ngModel =
+                        {
+                            path:data.Location,
+                            name:scope.name
+                        };
+                        scope.open = false;
+                        scope.$apply();
+
+                    }
+                }, function (progress)
+                {
+                    scope.indicator = progress;
+                    scope.$apply();
+                });
+            };
+
+            scope.upload = function (file, onUpload, onUploading)
+            {
+                var params = {Bucket: 'sepfiles', Key: file.name, Body: file, ACL: 'public-read'};
+
+                var s3 = new AWS.S3();
+
+                s3.upload(params, onUpload).on('httpUploadProgress', function (event)
+                {
+                    onUploading(Math.floor(event.loaded / event.total * 100));
+                });
+
+            };
+            scope.viewFile = function ()
+            {
+                window.open(scope.ngModel.path);
+            };
+
+            scope.deleteFile = function ()
+            {
+                scope.ngModel = "";
+                scope.filename = "";
+                scope.indicator = undefined;
+            }
+        }
+
+    };
+
+})
     .run(function($rootScope, $location)
     {
         // register listener to watch route changes

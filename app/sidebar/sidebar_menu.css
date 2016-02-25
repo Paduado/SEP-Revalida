@@ -2,7 +2,7 @@
     position : fixed;
     top : 5em;
     left : 0;
-    background-color : #8e2b2b;
+    background-color : #BC2A2A;
     width: 15em;
     height: 100vh;
     overflow-y: auto;
@@ -18,7 +18,7 @@
  ********************************************************************************/
 .sidebar-header{
     display : block;
-    background-color : #8e2b2b;
+    background-color : #BC2A2A;
     color : white;
     text-decoration : none;
     width : 100%;
@@ -47,7 +47,7 @@
  ********************************************************************************/
 .sidebar-item {
     display : block;
-    background-color : #c44e41;
+    background-color : #B21D1D;
     color : white;
     text-decoration : none;
     width : 100%;
@@ -69,7 +69,7 @@
 }
 
 .sidebar-item:hover {
-    background-color: #6A3226;
+    background-color: #A20D0D;
 }
 
 .sidebar-nav p
@@ -83,7 +83,7 @@
  ********************************************************************************/
 .sidebar-item-selected {
     display : block;
-    background-color : #541b1b;
+    background-color : #A20D0D;
     color : white;
     text-decoration : none;
     width : 100%;

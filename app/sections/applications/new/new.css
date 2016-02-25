@@ -26,7 +26,7 @@ select.custom-input{
     background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
 }
 .custom-input:focus{
-    border-bottom: solid #c44e41 2px ;
+    border-bottom: solid #BC2A2A 2px ;
     margin-bottom: calc(2em - 1px);
     outline: none;
 }
